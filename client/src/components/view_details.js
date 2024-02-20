@@ -9,7 +9,7 @@ function View_details() {
 
       useEffect(()=>{
         const getAllData=async()=>{
-            const res=await axios.get("http://localhost:9000/api/v1/distributors");
+            const res=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors`);
             setDisData(res.data);
         };
         getAllData()
@@ -18,7 +18,7 @@ function View_details() {
       const handleSearch = async (e) => {
         e.preventDefault();
         try {
-          const res = await axios.get(`http://localhost:9000/api/v1/distributors/search?name=${value}`);
+          const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors/search?name=${value}`);
           setDisData(res.data);
           setValue("");
         } catch (error) {

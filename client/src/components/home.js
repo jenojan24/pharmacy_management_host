@@ -9,7 +9,7 @@ function Home() {
 
 useEffect(()=>{
        const getAllData=async()=>{
-             const res=await axios.get("http://localhost:9000/api/v1/distributors");
+             const res=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors`);
              setDistributors(res.data);
        };
        getAllData();
@@ -18,7 +18,7 @@ useEffect(()=>{
               const handleSearch = async (e) => {
                 e.preventDefault();
                 try {
-                  const res = await axios.get(`http://localhost:9000/api/v1/distributors/search?dis_ID=${value}&name=${value}`);
+                  const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors/search?dis_ID=${value}&name=${value}`);
                   setDistributors(res.data);
                   setValue("");
                 } catch (error) {

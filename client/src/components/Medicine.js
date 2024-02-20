@@ -51,7 +51,7 @@ function Medicine() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:9000/api/v1/distributors", data);
+            await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors`, data);
         } catch (error) {
             console.error(error);
             console.log("Patient: ",data);

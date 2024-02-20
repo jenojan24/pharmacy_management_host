@@ -10,7 +10,7 @@ function Edit_distributor() {
        
 useEffect(()=>{
        const getAllData=async()=>{
-             const res=await axios.get("http://localhost:9000/api/v1/distributors");
+             const res=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors`);
              setDistributors(res.data);
        };
        getAllData();
@@ -25,7 +25,7 @@ useEffect(()=>{
                   cancelButtonColor: '#3085d6',
                   confirmButtonText: 'Yes, delete it!'
                 });
-                if (result.isConfirmed){await axios.delete(`http://localhost:9000/api/v1/distributors/${id}`);
+                if (result.isConfirmed){await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors/${id}`);
                 const newDistributors=distributors.filter((item)=>{
                     return item._id!==id;
                     

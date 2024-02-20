@@ -28,7 +28,7 @@ function Edit_form() {
 
     useEffect(()=>{
         const getAllData=async()=>{
-              const res=await axios.get(`http://localhost:9000/api/v1/distributors/single/${id}`);
+              const res=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors/single/${id}`);
               const data = res.data;
               data.isValidContact_No = true;
               data.isValidNic=true; // Set isValidContact_No to true
@@ -71,7 +71,7 @@ const handleUpdate=async (e) =>{
         });
         return;
       }
-      if (confirmed.isConfirmed){await axios.put(`http://localhost:9000/api/v1/distributors/${id}`,data);
+      if (confirmed.isConfirmed){await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/v1/distributors/${id}`,data);
     navigate('/edit');
     }else{
         navigate('/edit');
